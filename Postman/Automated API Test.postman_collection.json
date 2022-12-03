@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "0bc4f886-05bd-47ff-a2fc-2dcb050200c7",
+		"name": "Automated API Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24736343"
+	},
+	"item": [
+		{
+			"name": "Get Products Term Deposit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// SET Random product-category value to simulate Error 400",
+							"var productCat = ([ 'TERM_DEPOSITS', 'TERM_DEPOSITS', 'TERMS_DEPOSITS']);",
+							"pm.environment.set(\"product-category\", _.sample(productCat));",
+							"",
+							"// Check for Error 200",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Check for Error 400",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"// Check for Error 406",
+							"//pm.test(\"Status code is 406\", function () {",
+							"//    pm.response.to.have.status(406);",
+							"//});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer.",
+						"key": "x-v",
+						"value": "{{RandomXV}}"
+					},
+					{
+						"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided.",
+						"key": "x-min-v",
+						"value": "3",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{BaseURL}}?effective=CURRENT&product-category={{product-category}}&page=1&page-size=25",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"query": [
+						{
+							"key": "effective",
+							"value": "CURRENT",
+							"description": "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'"
+						},
+						{
+							"key": "updated-since",
+							"value": "<dateTime>",
+							"description": "Only include products that have been updated after the specified date and time. If absent defaults to include all products",
+							"disabled": true
+						},
+						{
+							"key": "brand",
+							"value": "<string>",
+							"description": "Filter results based on a specific brand",
+							"disabled": true
+						},
+						{
+							"key": "product-category",
+							"value": "{{product-category}}",
+							"description": "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned."
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"description": "Page of results to request (standard pagination)"
+						},
+						{
+							"key": "page-size",
+							"value": "25",
+							"description": "Page size to request. Default is 25 (standard pagination)"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer.",
+								"key": "x-v",
+								"value": "3"
+							},
+							{
+								"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided.",
+								"key": "x-min-v",
+								"value": "3",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}?effective=CURRENT&product-category=TERM_DEPOSITS&page=1&page-size=25",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"query": [
+								{
+									"key": "effective",
+									"value": "CURRENT",
+									"description": "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'"
+								},
+								{
+									"key": "updated-since",
+									"value": "<dateTime>",
+									"description": "Only include products that have been updated after the specified date and time. If absent defaults to include all products",
+									"disabled": true
+								},
+								{
+									"key": "brand",
+									"value": "<string>",
+									"description": "Filter results based on a specific brand",
+									"disabled": true
+								},
+								{
+									"key": "product-category",
+									"value": "TERM_DEPOSITS",
+									"description": "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned."
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page of results to request (standard pagination)"
+								},
+								{
+									"key": "page-size",
+									"value": "25",
+									"description": "Page size to request. Default is 25 (standard pagination)"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 03 Dec 2022 02:45:52 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-v",
+							"value": "3"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3600"
+						},
+						{
+							"key": "Access-Control-Expose-Headers",
+							"value": "Content-Length"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Range,x-v,x-min-v"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"products\": [\n            {\n                \"brand\": \"Tyro Payments\",\n                \"description\": \"A fixed term investment for businesses at an agreed rate of interest.\",\n                \"isTailored\": false,\n                \"lastUpdated\": \"2022-11-03T22:39:17.246124Z\",\n                \"name\": \"180 Day Business Term Deposit\",\n                \"productCategory\": \"TERM_DEPOSITS\",\n                \"productId\": \"ffbc7686-a3dc-4eba-b5c2-298eacf05fe2\",\n                \"additionalInformation\": {\n                    \"overviewUri\": null,\n                    \"termsUri\": \"https://www.tyro.com/term-deposit-terms\",\n                    \"eligibilityUri\": null,\n                    \"feesAndPricingUri\": null,\n                    \"bundleUri\": null,\n                    \"additionalOverviewUris\": null,\n                    \"additionalTermsUris\": null,\n                    \"additionalEligibilityUris\": null,\n                    \"additionalFeesAndPricingUris\": null,\n                    \"additionalBundleUris\": null\n                },\n                \"applicationUri\": null,\n                \"brandName\": \"Tyro Payments\",\n                \"cardArt\": [],\n                \"effectiveFrom\": \"2022-08-18T14:00:00Z\",\n                \"effectiveTo\": null\n            },\n            {\n                \"brand\": \"Tyro Payments\",\n                \"description\": \"A fixed term investment for businesses at an agreed rate of interest.\",\n                \"isTailored\": false,\n                \"lastUpdated\": \"2022-11-03T22:38:55.43903Z\",\n                \"name\": \"90 Day Business Term Deposit\",\n                \"productCategory\": \"TERM_DEPOSITS\",\n                \"productId\": \"f3054f20-74f3-485d-aa4d-15ac79f19157\",\n                \"additionalInformation\": {\n                    \"overviewUri\": null,\n                    \"termsUri\": \"https://www.tyro.com/term-deposit-terms\",\n                    \"eligibilityUri\": null,\n                    \"feesAndPricingUri\": null,\n                    \"bundleUri\": null,\n                    \"additionalOverviewUris\": null,\n                    \"additionalTermsUris\": null,\n                    \"additionalEligibilityUris\": null,\n                    \"additionalFeesAndPricingUris\": null,\n                    \"additionalBundleUris\": null\n                },\n                \"applicationUri\": null,\n                \"brandName\": \"Tyro Payments\",\n                \"cardArt\": [],\n                \"effectiveFrom\": \"2019-12-09T13:00:00Z\",\n                \"effectiveTo\": null\n            },\n            {\n                \"brand\": \"Tyro Payments\",\n                \"description\": \"A fixed term investment for businesses at an agreed rate of interest.\",\n                \"isTailored\": false,\n                \"lastUpdated\": \"2022-07-25T06:54:01.585855Z\",\n                \"name\": \"60 Day Business Term Deposit\",\n                \"productCategory\": \"TERM_DEPOSITS\",\n                \"productId\": \"37737065-2212-4aab-8a93-d4c3480358d2\",\n                \"additionalInformation\": {\n                    \"overviewUri\": null,\n                    \"termsUri\": \"https://www.tyro.com/term-deposit-terms\",\n                    \"eligibilityUri\": null,\n                    \"feesAndPricingUri\": null,\n                    \"bundleUri\": null,\n                    \"additionalOverviewUris\": null,\n                    \"additionalTermsUris\": null,\n                    \"additionalEligibilityUris\": null,\n                    \"additionalFeesAndPricingUris\": null,\n                    \"additionalBundleUris\": null\n                },\n                \"applicationUri\": null,\n                \"brandName\": \"Tyro Payments\",\n                \"cardArt\": [],\n                \"effectiveFrom\": \"2019-12-09T13:00:00Z\",\n                \"effectiveTo\": null\n            },\n            {\n                \"brand\": \"Tyro Payments\",\n                \"description\": \"A fixed term investment for businesses at an agreed rate of interest.\",\n                \"isTailored\": false,\n                \"lastUpdated\": \"2022-07-25T06:53:28.021522Z\",\n                \"name\": \"30 Day Business Term Deposit\",\n                \"productCategory\": \"TERM_DEPOSITS\",\n                \"productId\": \"a072f9d4-082b-4d23-8ddc-d9db7d88d417\",\n                \"additionalInformation\": {\n                    \"overviewUri\": null,\n                    \"termsUri\": \"https://www.tyro.com/term-deposit-terms\",\n                    \"eligibilityUri\": null,\n                    \"feesAndPricingUri\": null,\n                    \"bundleUri\": null,\n                    \"additionalOverviewUris\": null,\n                    \"additionalTermsUris\": null,\n                    \"additionalEligibilityUris\": null,\n                    \"additionalFeesAndPricingUris\": null,\n                    \"additionalBundleUris\": null\n                },\n                \"applicationUri\": null,\n                \"brandName\": \"Tyro Payments\",\n                \"cardArt\": [],\n                \"effectiveFrom\": \"2019-12-09T13:00:00Z\",\n                \"effectiveTo\": null\n            }\n        ]\n    },\n    \"links\": {\n        \"self\": \"https://public.cdr.tyro.com/cds-au/v1/banking/products?effective=CURRENT&product-category=TERM_DEPOSITS&page=1&page-size=25\",\n        \"first\": null,\n        \"prev\": null,\n        \"next\": null,\n        \"last\": null\n    },\n    \"meta\": {\n        \"totalRecords\": 4,\n        \"totalPages\": 1\n    }\n}"
+				},
+				{
+					"name": "Bad Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer.",
+								"key": "x-v",
+								"value": "3"
+							},
+							{
+								"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided.",
+								"key": "x-min-v",
+								"value": "3",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}?effective=CURRENT&product-category=TERM_DEPOSITS&page=1&page-size=25",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"query": [
+								{
+									"key": "effective",
+									"value": "CURRENT",
+									"description": "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'"
+								},
+								{
+									"key": "updated-since",
+									"value": "<dateTime>",
+									"description": "Only include products that have been updated after the specified date and time. If absent defaults to include all products",
+									"disabled": true
+								},
+								{
+									"key": "brand",
+									"value": "<string>",
+									"description": "Filter results based on a specific brand",
+									"disabled": true
+								},
+								{
+									"key": "product-category",
+									"value": "TERM_DEPOSITS",
+									"description": "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned."
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page of results to request (standard pagination)"
+								},
+								{
+									"key": "page-size",
+									"value": "25",
+									"description": "Page size to request. Default is 25 (standard pagination)"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 03 Dec 2022 02:49:11 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3600"
+						},
+						{
+							"key": "Access-Control-Expose-Headers",
+							"value": "Content-Length"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Range,x-v,x-min-v"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"code\": \"urn:au-cds:error:cds-all:Field/Invalid\",\n            \"title\": \"Invalid Field\",\n            \"detail\": \"Provided value is malformed or invalid: TERMS_DEPOSITS for field: product-category.\",\n            \"meta\": null\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Product Detail Business Loan",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// SET Random xv value to simulate Error 400 (Moved to Global Test VAR)",
+							"//var XVarray = ([ '3', '3', '3a']);",
+							"//pm.environment.set(\"RandomXV\", _.sample(XVarray));",
+							"",
+							"// Check for Error 400",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Check for Error 400",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"// Check for Error 4006",
+							"//pm.test(\"Status code is 406\", function () {",
+							"//    pm.response.to.have.status(406);",
+							"//});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer.",
+						"key": "x-v",
+						"value": "{{RandomXV}}"
+					},
+					{
+						"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided.",
+						"key": "x-min-v",
+						"value": "1",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{BaseURL}}/:productId",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "b5ee1091-e3af-4517-8f8f-8cc52434472b"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer.",
+								"key": "x-v",
+								"value": "3"
+							},
+							{
+								"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided.",
+								"key": "x-min-v",
+								"value": "1",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/:productId",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "b5ee1091-e3af-4517-8f8f-8cc52434472b"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 03 Dec 2022 02:48:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-v",
+							"value": "3"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3600"
+						},
+						{
+							"key": "Access-Control-Expose-Headers",
+							"value": "Content-Length"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Range,x-v,x-min-v"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"brand\": \"Tyro Payments\",\n        \"description\": \"An unsecured business loan designed to help you expand, finance new inventory or just keep moving.\",\n        \"isTailored\": false,\n        \"lastUpdated\": \"2022-03-03T04:51:45.686368Z\",\n        \"name\": \"Tyro Business Loan\",\n        \"productCategory\": \"BUSINESS_LOANS\",\n        \"productId\": \"b5ee1091-e3af-4517-8f8f-8cc52434472b\",\n        \"additionalInformation\": {\n            \"bundleUri\": null,\n            \"eligibilityUri\": null,\n            \"feesAndPricingUri\": null,\n            \"overviewUri\": \"https://www.tyro.com/products/business-loans/\",\n            \"termsUri\": \"https://www.tyro.com/products/business-loans/terms/\"\n        },\n        \"applicationUri\": null,\n        \"brandName\": \"Tyro Payments\",\n        \"cardArt\": [],\n        \"effectiveFrom\": null,\n        \"effectiveTo\": null,\n        \"bundles\": [],\n        \"constraints\": [\n            {\n                \"constraintType\": \"MAX_LIMIT\",\n                \"additionalInfo\": null,\n                \"additionalInfoUri\": null,\n                \"additionalValue\": \"350000.00\"\n            }\n        ],\n        \"depositRates\": [],\n        \"eligibility\": [\n            {\n                \"eligibilityType\": \"BUSINESS\",\n                \"additionalInfo\": \"You must have an active ABN.\",\n                \"additionalInfoUri\": null,\n                \"additionalValue\": null\n            },\n            {\n                \"eligibilityType\": \"OTHER\",\n                \"additionalInfo\": \"You must be a Tyro EFTPOS/eCommerce customer.\",\n                \"additionalInfoUri\": null,\n                \"additionalValue\": \"\"\n            }\n        ],\n        \"features\": [],\n        \"fees\": [\n            {\n                \"feeType\": \"VARIABLE\",\n                \"name\": \"Upfront fee\",\n                \"accrualFrequency\": null,\n                \"accruedRate\": null,\n                \"additionalInfo\": \"\",\n                \"additionalInfoUri\": null,\n                \"additionalValue\": null,\n                \"amount\": null,\n                \"balanceRate\": null,\n                \"currency\": null,\n                \"discounts\": [],\n                \"transactionRate\": null\n            }\n        ],\n        \"lendingRates\": []\n    },\n    \"links\": {\n        \"self\": \"https://public.cdr.tyro.com/cds-au/v1/banking/products/b5ee1091-e3af-4517-8f8f-8cc52434472b\"\n    },\n    \"meta\": {}\n}"
+				},
+				{
+					"name": "Bad Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer.",
+								"key": "x-v",
+								"value": "3a"
+							},
+							{
+								"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided.",
+								"key": "x-min-v",
+								"value": "1",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/:productId",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "b5ee1091-e3af-4517-8f8f-8cc52434472b"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 03 Dec 2022 02:42:34 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3600"
+						},
+						{
+							"key": "Access-Control-Expose-Headers",
+							"value": "Content-Length"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Range,x-v,x-min-v"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"code\": \"urn:au-cds:error:cds-all:Header/InvalidVersion\",\n            \"title\": \"Invalid Version\",\n            \"detail\": \"Provided version header is malformed or invalid: 3a for header: x-v\",\n            \"meta\": null\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// SET Random xv value to simulate Error 400 for Product Product and Product Details",
+					"var XVarray = ([ '3', '3', '3a']);",
+					"pm.environment.set(\"RandomXV\", _.sample(XVarray));"
+				]
+			}
+		}
+	]
+}

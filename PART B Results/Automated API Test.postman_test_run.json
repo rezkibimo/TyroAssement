@@ -1,0 +1,330 @@
+{
+	"id": "ef9cf25a-f6fe-4edf-a2e1-72c50a224ca4",
+	"name": "Automated API Test",
+	"timestamp": "2022-12-03T05:20:57.143Z",
+	"collection_id": "24736343-0bc4f886-05bd-47ff-a2fc-2dcb050200c7",
+	"folder_id": 0,
+	"environment_id": "24736343-287e7742-c284-4fe0-86b1-300167534b25",
+	"totalPass": 50,
+	"totalFail": 50,
+	"results": [
+		{
+			"id": "c104761a-bfbe-4bf2-bd54-28eed2c52275",
+			"name": "Get Products Term Deposit",
+			"time": 122,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 200": false,
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 25
+				},
+				"Status code is 400": {
+					"pass": 25,
+					"fail": 0
+				}
+			},
+			"times": [
+				595,
+				123,
+				121,
+				122,
+				126,
+				121,
+				125,
+				122,
+				122,
+				122,
+				122,
+				123,
+				122,
+				121,
+				129,
+				126,
+				123,
+				123,
+				124,
+				123,
+				122,
+				121,
+				123,
+				123,
+				122
+			],
+			"allTests": [
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "2a7ed714-746b-4f40-ae1e-f3f875f01311",
+			"name": "Get Product Detail Business Loan",
+			"time": 132,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Status code is 400": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 14,
+					"fail": 11
+				},
+				"Status code is 400": {
+					"pass": 11,
+					"fail": 14
+				}
+			},
+			"times": [
+				131,
+				123,
+				122,
+				137,
+				147,
+				136,
+				122,
+				141,
+				123,
+				137,
+				140,
+				123,
+				134,
+				135,
+				124,
+				139,
+				127,
+				147,
+				135,
+				123,
+				123,
+				139,
+				125,
+				139,
+				132
+			],
+			"allTests": [
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": false,
+					"Status code is 400": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				},
+				{
+					"Status code is 200": true,
+					"Status code is 400": false
+				}
+			]
+		}
+	],
+	"count": 25,
+	"totalTime": 6850,
+	"collection": {
+		"requests": [
+			{
+				"id": "c104761a-bfbe-4bf2-bd54-28eed2c52275",
+				"method": "GET"
+			},
+			{
+				"id": "2a7ed714-746b-4f40-ae1e-f3f875f01311",
+				"method": "GET"
+			}
+		]
+	}
+}
