@@ -13,9 +13,10 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"// SET Random product-category value to simulate Error 400",
-							"var productCat = ([ 'TERM_DEPOSITS', 'TERM_DEPOSITS', 'TERMS_DEPOSITS']);",
-							"pm.environment.set(\"product-category\", _.sample(productCat));",
+							"// SET Random product-category value to simulate Error 400 NO LONGER NECESSARY FOR NOW. ",
+							"// ALL Error 400 simulated by one global test by xv  error",
+							"//var productCat = ([ 'TERM_DEPOSITS', 'TERM_DEPOSITS', 'TERMS_DEPOSITS']);",
+							"//pm.environment.set(\"product-category\", _.sample(productCat));",
 							"",
 							"// Check for Error 200",
 							"pm.test(\"Status code is 200\", function () {",
