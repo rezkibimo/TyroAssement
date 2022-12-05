@@ -20,6 +20,7 @@ I have invited you to the Postman workspace. However, I also have provided the f
 
 - Tyro OpenAPI specification from the website
 - Postman
+- Javascript knowledge for creating automated testing scripts 
 
 ### Issues found/faced:
 
